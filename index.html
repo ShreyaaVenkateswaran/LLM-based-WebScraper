@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>News Summarizer</h1>
+        <form method="POST">
+            <label for="url">Enter News Article URL:</label>
+            <input type="text" id="url" name="url" placeholder="https://example.com/news" required>
+            <button type="submit">Summarize</button>
+        </form>
+
+        {% if summary %}
+            <div class="summary">
+                <h2>Summary</h2>
+                <p>{{ summary }}</p>
+                <p><strong>Source:</strong> <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="error">
+                <p>Error: {{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
